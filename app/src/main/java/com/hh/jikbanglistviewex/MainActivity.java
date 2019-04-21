@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 mAdapter.notifyDataSetChanged();
+                act.listJikBang.smoothScrollToPosition(jikBangList.size()-1);
 
             }
         });
