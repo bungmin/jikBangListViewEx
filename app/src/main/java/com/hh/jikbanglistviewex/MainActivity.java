@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         act.listJikBang.setAdapter(mAdapter);
 
 
+
         act.listJikBang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
