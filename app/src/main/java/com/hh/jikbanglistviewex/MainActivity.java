@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding act;
     List<JikBang> jikBangList = new ArrayList<JikBang>();
     JikBangAdapter mAdapter;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new JikBangAdapter(MainActivity.this, jikBangList);
         act.listJikBang.setAdapter(mAdapter);
-
 
 
         act.listJikBang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -49,6 +49,38 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        act.listJikBang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                jikBangList.remove(position);
+                mAdapter.notifyDataSetChanged();
+
+
+                return true;
+            }
+        });
+
+        act.BangAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String tempAddr = "임시주소";
+                String tempDescription = "임시설명";
+
+                tempAddr += Integer.toString(++i);
+                tempDescription += Integer.toString(i);
+
+                jikBangList.add(new JikBang(i, i, i, tempAddr, tempDescription));
+
+
+
+                mAdapter.notifyDataSetChanged();
+
+            }
+        });
+
 
     }
 
